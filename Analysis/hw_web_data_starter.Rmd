@@ -1,0 +1,81 @@
+---
+title: 'STAT 413/613 Homework on Web Data: APIs and Scraping'
+author: ""
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 4
+  pdf_document:
+    number_sections: yes
+    toc: no
+    toc_depth: '4'
+urlcolor: blue
+
+---
+
+# Instructions {-}
+
+- Write your solutions **in this starter file**. 
+  + Modify the "author" field in the YAML header.
+- Commit R Markdown and HTML files (no PDF files). **Push both .Rmd and HTML files to GitHub**.
+  + Make sure you have knitted to HTML for your final submission.
+- **Only include necessary code and data** to answer the questions.
+- Most of the functions you use should be from the tidyverse. **Too much base R **will result in point deductions.
+- Submit a response on Canvas that your assignment is complete on GitHub
+- Feel free to use Pull requests and or email (attach your .Rmd) to ask me any questions.
+
+
+# Using APIs
+
+- Pick a website of your choice (not discussed in class) that requires a free API key to download a data set. Convert elements of interest into a tibble and create a graph to answer a question of interest.
+- State the question and interpret the plot.
+
+# IMDB List of Oscar Winners
+
+IMDB has a list of the [Oscar Best Picture Winners](https://www.imdb.com/search/title/?count=100&groups=oscar_best_picture_winners&sort=year%2Cdesc&ref_=nv_ch_osc).
+
+Scrape the following elements, convert the data into a tibble, tidy it, and clean it to answer the questions below: 
+
+- Number
+- Title
+- Year
+- MPAA Rating
+- Length in minutes
+- Genre
+- Star Rating
+- Metascore Rating
+- Gross Receipts
+
+Convert the data into a tibble, tidy it, and clean it to answer the following questions:
+
+
+
+1. Show a summary of the number of data elements for each movie that are not NA. Which two elements are missing the most from the movies?
+
+
+
+2. Create a plot of the length of a film and its gross, color coded by rating. Show linear smoothers for each rating.
+- Does MPAA rating matter?  
+
+
+3. Create a plot with a single Ordinary Least Squares smoothing line with no standard errors showing for predicting stars rating based on metacritic scores for those movies that have metacritic scores. 
+- Use a linear model to assess if there is there a meaningful relationship. Show the summary of the output and interpret in terms of the $p$-value and the adjusted R-Squared?
+
+
+4. Use an appropriate plot to compare the gross receipts by MPAA rating.
+  + Which MPAA rating has the highest median gross receipts? 
+  + Which R-rated movies are in the overall top 10 of gross receipts?
+  + Use one-way analysis of variance to assess the level of evidence for whether all ratings have the same mean gross receipts. Show the summary of the results and provide your interpretation of the results.
+
+
+# Extra Credit 1 Pts
+
+- Listen to the AI Today podcast on [Machine Learning Ops](https://podcasts.apple.com/us/podcast/ai-today-podcast-artificial-intelligence-insights-experts/id1279927057?i=1000468771571) and provide your thoughts on the following questions:  
+
+1. Does knowing about Git and GitHub help you in understanding the podcast?  
+
+2. How do you think the ideas of ML OPs will affect your future data science projects?  
+
+You may also want to check out this article on [Towards Data Science](https://towardsdatascience.com/ml-ops-machine-learning-as-an-engineering-discipline-b86ca4874a3f)
