@@ -235,3 +235,55 @@ summary(one.way)
 Interpretation: 
 As the p-value is bigger than the significance level 0.05, we can conclude that there are not significant differences between the groups.
 
+```{r}
+library(tidyverse)
+library(keyring)
+library(httr)
+
+key_set("API_KEY_SECURE")
+key_get("API_KEY_SECURE")
+```
+- Pick a website of your choice (not discussed in class) that requires a free API key to download a data set. Convert elements of interest into a tibble and create a graph to answer a question of interest.
+```{r}
+mout <- GET(url = "https://finnhub.io/api/v1/stock/candle/?c1hgcef48v6ptfsu4iqg",
+            query = list(symbol="AAPL",
+                         resolution=1,
+                         from=1615298999, 
+                         to=1615302599,
+                         r = "json",
+                         token = key_get("API_KEY_SECURE")))
+content(mout) -> a
+```
+
+```{r}
+status_code(mout)
+```
+
+- State the question and interpret the plot.
+Question: Find out close_price against time using ggplot. 
+```{r}
+library(purrr)
+time <- a[[6]]
+close <- a[[1]]
+```
+
+```{r}
+time %>% 
+  flatten() %>% 
+  map(1) %>% 
+  as_vector() -> time_1
+close %>%  
+  flatten() %>%  
+  map(1) %>%  
+  as_vector() -> close_1
+df <- data.frame(time_1, close_1)
+```
+
+
+```{r}
+df %>%  
+ggplot(aes(y = close_1, x = time_1)) +
+  geom_line()
+```
+Interepretation: When time is around 1615300000, the close price is the lowest. Overall the close price is getting higher when the time goes. 
+
