@@ -50,14 +50,16 @@ library(rvest)
 library(tidyverse)
 library(stringr)
 ```
-## Use read_html() to save an HTML file to a variable.
 
+```{r}
 # html_obj <- read_html("https://www.imdb.com/search/title/?count=100&groups=oscar_best_picture_winners&sort=year%2Cdesc&ref_=nv_ch_osc")
-# html_obj 
-# class(html_obj)
 
 # I used below html url because I am in South Korea and when I use the above url, some of the data are translated and some of them appear different, so I figured out using cache.
+```
+
+
 ```{r}
+# Use read_html() to save an HTML file to a variable.
 html_obj_1 <- read_html("https://webcache.googleusercontent.com/search?q=cache:fvpH0ObPBr0J:https://www.imdb.com/search/title/%3Fcount%3D100%26groups%3Doscar_best_picture_winners%26sort%3Dyear%252Cdesc%26ref_%3Dnv_ch_osc+&cd=1&hl=ko&ct=clnk&gl=kr")
 class(html_obj_1)
 ```

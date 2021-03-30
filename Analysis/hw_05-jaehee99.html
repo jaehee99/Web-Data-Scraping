@@ -174,12 +174,7 @@ pre code {
 <div id="TOC">
 <ul>
 <li><a href="#instructions">Instructions</a></li>
-<li><a href="#imdb-list-of-oscar-winners"><span class="toc-section-number">1</span> IMDB List of Oscar Winners</a>
-<ul>
-<li><a href="#use-read_html-to-save-an-html-file-to-a-variable."><span class="toc-section-number">1.1</span> Use read_html() to save an HTML file to a variable.</a></li>
-</ul></li>
-<li><a href="#interpretation"><span class="toc-section-number">2</span> Interpretation:</a></li>
-<li><a href="#interpretation-1"><span class="toc-section-number">3</span> Interpretation:</a></li>
+<li><a href="#imdb-list-of-oscar-winners"><span class="toc-section-number">1</span> IMDB List of Oscar Winners</a></li>
 </ul>
 </div>
 
@@ -229,14 +224,10 @@ library(tidyverse)</code></pre>
 ## x readr::guess_encoding() masks rvest::guess_encoding()
 ## x dplyr::lag()            masks stats::lag()</code></pre>
 <pre class="r"><code>library(stringr)</code></pre>
-<div id="use-read_html-to-save-an-html-file-to-a-variable." class="section level2" number="1.1">
-<h2 number="1.1"><span class="header-section-number">1.1</span> Use read_html() to save an HTML file to a variable.</h2>
 <pre class="r"><code># html_obj &lt;- read_html(&quot;https://www.imdb.com/search/title/?count=100&amp;groups=oscar_best_picture_winners&amp;sort=year%2Cdesc&amp;ref_=nv_ch_osc&quot;)
-# html_obj 
-# class(html_obj)
 
-# I used below html url because I am in South Korea and when I use the above url, some of the data are translated and some of them appear different, so I figured out using cache.
-
+# I used below html url because I am in South Korea and when I use the above url, some of the data are translated and some of them appear different, so I figured out using cache.</code></pre>
+<pre class="r"><code># Use read_html() to save an HTML file to a variable.
 html_obj_1 &lt;- read_html(&quot;https://webcache.googleusercontent.com/search?q=cache:fvpH0ObPBr0J:https://www.imdb.com/search/title/%3Fcount%3D100%26groups%3Doscar_best_picture_winners%26sort%3Dyear%252Cdesc%26ref_%3Dnv_ch_osc+&amp;cd=1&amp;hl=ko&amp;ct=clnk&amp;gl=kr&quot;)
 class(html_obj_1)</code></pre>
 <pre><code>## [1] &quot;xml_document&quot; &quot;xml_node&quot;</code></pre>
@@ -469,11 +460,7 @@ summary(data_3)</code></pre>
 ##   (17 observations deleted due to missingness)
 ## Multiple R-squared:  0.09285,    Adjusted R-squared:  0.08059 
 ## F-statistic: 7.574 on 1 and 74 DF,  p-value: 0.007443</code></pre>
-</div>
-</div>
-<div id="interpretation" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Interpretation:</h1>
-<p>p-value is 0.007443 which is smaller than significance level( =0.01),this will reject the null hypothesis and this tells us that this is statistically significant. Adusted R-squared is 0.08059, this means that we can only explain 8% of this model, indicating that this is not a good model. Since Adjusted R2 indicates how well terms fit a curve or line. When we see the graph above, we can easily see that a lot of points do not well align with the blue line. Therefore, I feel this is not a good model: This linear model doesn’t show that there is a meaningful relationship between star_rating and metaScore_rating.</p>
+<p>Interpretation: p-value is 0.007443 which is smaller than significance level( =0.01),this will reject the null hypothesis and this tells us that this is statistically significant. Adusted R-squared is 0.08059, this means that we can only explain 8% of this model, indicating that this is not a good model. Since Adjusted R2 indicates how well terms fit a curve or line. When we see the graph above, we can easily see that a lot of points do not well align with the blue line. Therefore, I feel this is not a good model: This linear model doesn’t show that there is a meaningful relationship between star_rating and metaScore_rating.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Use an appropriate plot to compare the gross receipts by MPAA rating.</li>
 </ol>
@@ -532,10 +519,7 @@ summary(one.way)</code></pre>
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 10 observations deleted due to missingness</code></pre>
-</div>
-<div id="interpretation-1" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> Interpretation:</h1>
-<p>As the p-value is bigger than the significance level 0.05, we can conclude that there are not significant differences between the groups.</p>
+<p>Interpretation: As the p-value is bigger than the significance level 0.05, we can conclude that there are not significant differences between the groups.</p>
 </div>
 
 
