@@ -283,7 +283,18 @@ df <- data.frame(time_1, close_1)
 ```{r}
 df %>%  
 ggplot(aes(y = close_1, x = time_1)) +
-  geom_line()
+  geom_line()+
+  theme_bw()+
+  xlab("Time")+
+  ylab("Close Price")
 ```
 Interepretation: When time is around 1615300000, the close price is the lowest. Overall the close price is getting higher when the time goes. 
 
+# 3 Extra Credit 1 Pts
+Listen to the AI Today podcast on Machine Learning Ops and provide your thoughts on the following questions:
+
+Does knowing about Git and GitHub help you in understanding the podcast?
+
+How do you think the ideas of ML OPs will affect your future data science projects?
+
+You may also want to check out this article on Towards Data Science
