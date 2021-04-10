@@ -239,12 +239,11 @@ As the p-value is bigger than the significance level 0.05, we can conclude that 
 library(tidyverse)
 library(keyring)
 library(httr)
-#c1hgcef48v6ptfsu4iqg
 ```
 
 ```{r}
-key_set("API_KEY_SECURE")
-key_get("API_KEY_SECURE")
+#key_set("API_KEY_SECURE")
+#c1hgcef48v6ptfsu4iqg
 ```
 
 - Pick a website of your choice (not discussed in class) that requires a free API key to download a data set. Convert elements of interest into a tibble and create a graph to answer a question of interest.
@@ -255,7 +254,8 @@ mout <- GET(url = "https://finnhub.io/api/v1/stock/candle/?c1hgcef48v6ptfsu4iqg"
                          from=1615298999, 
                          to=1615302599,
                          r = "json",
-                         token = key_get("API_KEY_SECURE")))
+                         token = 'c1hgcef48v6ptfsu4iqg'))
+                        #  token = key_get("API_KEY_SECURE")))
 content(mout) -> a
 ```
 
@@ -264,38 +264,34 @@ status_code(mout)
 ```
 
 - State the question and interpret the plot.
-Question: Find out close_price against time using ggplot. 
+
+# Question: Find out close_price changes against time using ggplot. 
 ```{r}
 time <- a[["t"]]
 close <- a[["c"]]
 ```
 
-
-
 ```{r}
-time %>%
-    flatten() %>%  
-  map(1) %>%
-  as_vector() -> time_1
+time %>%  map_dbl(~.) -> time_1
 
-close %>%
-  flatten() %>% 
-  map(1) %>%  
-  as_vector()-> close_1
+close %>% map_dbl(~.) -> close_1
 
-df <- data.frame(time_1, close_1)
+df <- map2_dfr(time_1, close_1, ~ tibble(time_1 = .x, close_1 = .y)) 
 ```
-
 
 ```{r}
 df %>%  
 ggplot(aes(y = close_1, x = time_1)) +
-  geom_line()+
-  theme_bw()+
+ geom_line()+
+ theme_bw()+
   xlab("Time")+
   ylab("Close Price")
 ```
-Interepretation: When time is around 1615300000, the close price is the lowest. Overall the close price is getting higher when the time goes. 
+
+
+# Interepretation: 
+
+When time is around 1615300000, the close price is the lowest. Overall the close price is getting higher when the time goes. 
 
 # 3 Extra Credit 1 Pts
 Listen to the AI Today podcast on Machine Learning Ops and provide your thoughts on the following questions:
