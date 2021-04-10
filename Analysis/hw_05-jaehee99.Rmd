@@ -239,10 +239,14 @@ As the p-value is bigger than the significance level 0.05, we can conclude that 
 library(tidyverse)
 library(keyring)
 library(httr)
+#c1hgcef48v6ptfsu4iqg
+```
 
+```{r}
 key_set("API_KEY_SECURE")
 key_get("API_KEY_SECURE")
 ```
+
 - Pick a website of your choice (not discussed in class) that requires a free API key to download a data set. Convert elements of interest into a tibble and create a graph to answer a question of interest.
 ```{r}
 mout <- GET(url = "https://finnhub.io/api/v1/stock/candle/?c1hgcef48v6ptfsu4iqg",
@@ -262,20 +266,23 @@ status_code(mout)
 - State the question and interpret the plot.
 Question: Find out close_price against time using ggplot. 
 ```{r}
-library(purrr)
-time <- a[[6]]
-close <- a[[1]]
+time <- a[["t"]]
+close <- a[["c"]]
 ```
 
+
+
 ```{r}
-time %>% 
-  flatten() %>% 
-  map(1) %>% 
+time %>%
+    flatten() %>%  
+  map(1) %>%
   as_vector() -> time_1
-close %>%  
-  flatten() %>%  
+
+close %>%
+  flatten() %>% 
   map(1) %>%  
-  as_vector() -> close_1
+  as_vector()-> close_1
+
 df <- data.frame(time_1, close_1)
 ```
 
@@ -293,8 +300,11 @@ Interepretation: When time is around 1615300000, the close price is the lowest. 
 # 3 Extra Credit 1 Pts
 Listen to the AI Today podcast on Machine Learning Ops and provide your thoughts on the following questions:
 
-Does knowing about Git and GitHub help you in understanding the podcast?
+# Does knowing about Git and GitHub help you in understanding the podcast?
+[Yes, knowing about Git and GitHub helped me in understanding the podcast. Speaker mentioned Git and GitHub at the beginning of the podcast saying that it is a version control system and it is used for collaborations. He also mentioned Git and GitHub at the end of this podcast. Github is doing commit, push, version control, pushing changes, practices of using version control, iteration on a model, training model. If I didn’t have an experience on Git and Github then it would be hard for me to understand it.]
 
-How do you think the ideas of ML OPs will affect your future data science projects?
 
-You may also want to check out this article on Towards Data Science
+# How do you think the ideas of ML OPs will affect your future data science projects?
+[ML OPs stands for “Machine learning Model Operationalization Management”, which is model development and machine learning model, operationalization and deployment. Speaker explains ML OPs is a new term that is an intersection of software engineering, machine learning, and devOps. Machine learning operatize AI, such as chatbots interacting with customers. I think ML OPs will affect the future data science projects in many different ways. Since these days, a lot of disciplines are merging, a lot of teams of people are using ML in products. As the speaker said, a lot of companies are using it with products. He talks about challenges when using ML models in production. ML OPs will affect future data science projects because ML OPs is not just programming codes, it is coding with data. It is trained by a lot of data which will affect the model. Since, these days massive data is created everyday, in the future there will be a lot of ML OPs usage with data science projects.]
+
+
