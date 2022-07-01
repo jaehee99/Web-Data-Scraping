@@ -2,8 +2,6 @@
 library(rvest)
 library(tidyverse)
 library(stringr)
-library(keyring)
-library(httr)
 
 # Use read_html() to save an HTML file to a variable.
 html_obj <- read_html("https://www.imdb.com/search/title/?count=100&groups=oscar_best_picture_winners&sort=year%2Cdesc&ref_=nv_ch_osc")
